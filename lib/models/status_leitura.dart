@@ -27,7 +27,6 @@ extension StatusLeituraExtension on StatusLeitura {
       case 'lendo':
         return StatusLeitura.lendo;
       case 'naolido':
-      case 'nãolido':
         return StatusLeitura.naoLido;
       default:
         return StatusLeitura.naoLido;

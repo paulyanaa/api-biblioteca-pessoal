@@ -19,11 +19,11 @@ class LivroRepository {
     if (value is int) {
       switch (value) {
         case 1:
-          return StatusLeitura.naoLido;
+          return StatusLeitura.lido;
         case 2:
           return StatusLeitura.lendo;
         case 3:
-          return StatusLeitura.lido;
+          return StatusLeitura.naoLido;
         default:
           return StatusLeitura.naoLido;
       }
