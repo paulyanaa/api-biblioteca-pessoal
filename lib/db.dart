@@ -15,7 +15,7 @@ class Db {
       final port = 6543;
       final db = env['DB_NAME'] ?? 'postgres';
       final user = env['DB_USER'] ?? 'postgres.zyuffpdceibvhkkrhnhb';
-      final pass = env['DB_PASSWORD'] ?? 'Pauly20122000!';
+      final pass = env['DB_PASSWORD'] ?? '4xpW>fM5TB@vgC)';
 
       _conn = PostgreSQLConnection(
         host,
