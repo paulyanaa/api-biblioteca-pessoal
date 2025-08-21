@@ -25,14 +25,14 @@ class Livro {
   });
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'titulo': titulo,
-        'autor': autor,
-        'capaUrl': capaUrl,
-        'categoria': categoria,
-        'status': status.label,
-        'anotacoes': anotacoes,
-        'avaliacao': avaliacao,
-        'emprestimo': emprestimo?.toJson(),
-      };
+    'id': id,
+    'titulo': titulo,
+    'autor': autor,
+    'capaUrl': capaUrl,
+    'categoria': categoria,
+    'status': status.label,
+    'anotacoes': anotacoes,
+    'avaliacao': avaliacao,
+    'emprestimo': emprestimo?.toJson(),
+  };
 }

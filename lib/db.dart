@@ -13,11 +13,17 @@ class Db {
       final env = Platform.environment;
       final host = env['DB_HOST'] ?? 'aws-1-us-east-2.pooler.supabase.com';
       final port = 6543;
-      final db   = env['DB_NAME'] ?? 'postgres';
+      final db = env['DB_NAME'] ?? 'postgres';
       final user = env['DB_USER'] ?? 'postgres.zyuffpdceibvhkkrhnhb';
       final pass = env['DB_PASSWORD'] ?? 'Pauly20122000!';
 
-      _conn = PostgreSQLConnection(host, port, db, username: user, password: pass);
+      _conn = PostgreSQLConnection(
+        host,
+        port,
+        db,
+        username: user,
+        password: pass,
+      );
       await _conn!.open();
     }
     return _conn!;

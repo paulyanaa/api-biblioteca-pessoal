@@ -6,7 +6,6 @@ import '../repositories/emprestimo_repository.dart';
 class EmprestimoController {
   final EmprestimoRepository _repo = EmprestimoRepository();
 
-  // CREATE
   Future<Response> adicionar(Request req) async {
     final payload = await req.readAsString();
     final data = jsonDecode(payload);
@@ -23,7 +22,6 @@ class EmprestimoController {
     return Response.ok(jsonEncode({'message': 'Empréstimo adicionado'}));
   }
 
-  // READ
   Response listarTodos(Request req) {
     final lista = _repo.listarTodos();
     final jsonList = lista.map((e) => e.toJson()).toList();
@@ -40,7 +38,6 @@ class EmprestimoController {
     return Response.ok(jsonEncode(emprestimo.toJson()));
   }
 
-  // UPDATE
   Future<Response> atualizar(Request req, int id) async {
     final payload = await req.readAsString();
     final data = jsonDecode(payload);
@@ -64,7 +61,6 @@ class EmprestimoController {
     return Response.ok(jsonEncode({'message': 'Empréstimo atualizado'}));
   }
 
-  // DELETE
   Response remover(Request req, int id) {
     final removido = _repo.remover(id);
     if (!removido) {

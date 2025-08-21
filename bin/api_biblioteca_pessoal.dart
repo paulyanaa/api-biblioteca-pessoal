@@ -10,8 +10,7 @@ void main(List<String> arguments) async {
       .addMiddleware(logRequests())
       .addHandler(appRoutes.router);
 
-  // Usa a porta do Render, ou 8080 se rodando local
-  final port = int.parse(Platform.environment['PORT'] ?? '8080');
+  final port = int.parse(Platform.environment['PORT'] ?? '8081');
 
   final server = await io.serve(handler, InternetAddress.anyIPv4, port);
   print('Servidor rodando em http://${server.address.host}:${server.port}');

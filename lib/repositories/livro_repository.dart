@@ -6,8 +6,6 @@ import '../models/emprestimo.dart';
 import '../models/status_leitura.dart';
 
 class LivroRepository {
-  // ----- Helpers -----
-
   double? parseDouble(dynamic value) {
     if (value == null) return null;
     if (value is num) return value.toDouble();
@@ -50,12 +48,8 @@ class LivroRepository {
     );
   }
 
-  // ----- CRUD -----
-
   Future<List<Livro>> listarTodos() async {
     final conn = await Db.instance.connection;
-
-    // Seleciona todos os livros e faz LEFT JOIN para trazer dados do empréstimo, se existir
     final result = await conn.query('''
         SELECT 
       l.id, l.titulo, l.autor, l.capaurl, l.categoria, l.statusleitura_id,
@@ -64,9 +58,7 @@ class LivroRepository {
     FROM public.livro l
     LEFT JOIN public.emprestimo e ON l.emprestimo_id = e.id
   ''');
-
     return result.map((row) {
-      // Extrai dados do empréstimo
       Emprestimo? emprestimo;
       final emprestimoId = row[8];
       final nomePessoa = row[9];
@@ -179,11 +171,9 @@ class LivroRepository {
   Future<bool> emprestar(int livroId, Emprestimo emprestimo) async {
     final conn = await Db.instance.connection;
 
-    // Verifica se o livro existe
     final livro = await buscarPorId(livroId);
     if (livro == null) return false;
 
-    // Cria o empréstimo incluindo nomePessoa
     final result = await conn.query(
       '''
     INSERT INTO emprestimo (nomePessoa, dataEmprestimo, dataDevolucao)
@@ -199,7 +189,6 @@ class LivroRepository {
 
     final emprestimoId = result.first[0] as int;
 
-    // Atualiza o livro com o id do empréstimo
     await conn.execute(
       '''
     UPDATE livro
